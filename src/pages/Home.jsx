@@ -7,7 +7,15 @@ const Home = () => {
   return (
     <div>
       <h3>Blog Posts</h3>
-      <ul style={{ padding: "0" }}>
+      <ul
+        style={{
+          padding: "0",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
         {posts.map((post, key) => (
           <Post post={post} key={key} />
         ))}
