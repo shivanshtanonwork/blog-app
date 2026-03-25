@@ -15,12 +15,24 @@ function PostProvider(props) {
       content: "Welcome to my 2nd Blog",
     },
   ]);
+
   function addPost(newPost) {
     const lastId = posts[posts.length - 1].id;
     setPosts((prev) => [...prev, { ...newPost, id: lastId + 1 }]);
   }
+
+  function findPostById(id) {
+    return posts.find((post) => post.id === id);
+  }
+
+  function updatePost(updatedPost) {
+    setPosts((prev) =>
+      prev.map((post) => (post.id === updatedPost.id ? updatedPost : post)),
+    );
+  }
+
   return (
-    <PostContext.Provider value={{ posts, addPost }}>
+    <PostContext.Provider value={{ posts, addPost, findPostById, updatePost }}>
       {props.children}
     </PostContext.Provider>
   );
